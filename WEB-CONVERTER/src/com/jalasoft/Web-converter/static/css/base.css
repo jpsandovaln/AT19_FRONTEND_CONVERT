@@ -1,0 +1,37 @@
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+h1 {
+    color: rgb(150, 150, 150);
+    font-family: fantasy;
+    font-size: 40px;
+}
+
+.site-header {
+    background: #2192FF;
+    padding: 10px
+}
+.navbar a {
+    font-family: Franklin Gothic Medium;
+    color: rgb(150, 150, 150);
+    background: #A75D5D;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0.5em;
+    padding: 1px;
+    line-height: 2em;
+}
+.nav-item a {
+    font-family: Trebuchet MS;
+    color: rgb(150, 150, 150);
+    background: #A75D5D;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 0.5em;
+    padding: 1px;
+    line-height: 2em;
+    border-radius: .5cm;
+
+}

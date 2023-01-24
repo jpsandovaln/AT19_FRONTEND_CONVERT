@@ -12,13 +12,15 @@ img_folder = os.path.join('static', 'IMG')
 app.config['UPLOAD_FOLDER'] = img_folder
 input_folder = os.path.join('uploads')
 app.config['UPLOAD_FOLDER2'] = input_folder
-MEDIA_PATH= r'D:\AT19_project\web\AT19_WEBCONVERTER\src\com\jalasoft\Web-converter\uploads'
+MEDIA_PATH = r'D:\AT19_project\web\AT19_WEBCONVERTER\src\com\jalasoft\Web-converter\uploads'
+
 
 @app.route("/", methods=['GET'])
 def Display_img():
     """Displays the main page and the logo"""
     Logo = os.path.join(app.config['UPLOAD_FOLDER'], 'logo.png')
-    return render_template("index.html", user_image=Logo,)
+    return render_template("index2.html", user_image=Logo)
+
 
 @app.route("/", methods=['POST'])
 def videotoimage():
@@ -35,6 +37,7 @@ def videotoimage():
     download_link = requests.post('http://localhost:5000/videotoimage/zip', params, files={"input_file": f}).text[1:-2]
     print(download_link)
     return render_template("index.html", user_image=Logo, download_link=download_link)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
