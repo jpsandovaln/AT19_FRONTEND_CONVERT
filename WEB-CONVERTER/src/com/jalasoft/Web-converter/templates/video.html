@@ -1,29 +1,56 @@
 {% extends './base.html' %}
 
-{% block title%} Lenguajes {% endblock %}
+{% block title%} Video {% endblock %}
 
 {% block body %}
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <h1>Lenguajes de Programación</h1>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for leng in lenguajes %}
-                    <tr>
-                        <td>{{loop.index}}</td>
-                        <td>{{leng}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+
+
+    <body>
+        <form method="post" enctype=multipart/form-data>
+            {{ form.hidden_tag() }}
+            <label for="file">File:</label>
+            {{ form.file(id="file") }}
+            <br>
+            <label for="output_type">Output type:</label>
+            {{ form.output_type(id="output_type") }}
+            <br>
+            <label for="fps">Fps:</label>
+            {{ form.fps(id="fps") }}
+            <br>
+            {{ form.submit() }}
+            <a href="{{ download_link }}" download>Download</a>
+        </form>
+    </body>
+<!--<div class="row">-->
+<!--&lt;!&ndash;    <div class="col-md-6 offset-md-3">&ndash;&gt;-->
+<!--        <h1>Video to images converter</h1>-->
+<!--        <div class="table-responsive">-->
+<!--            <table class="table table-striped">-->
+<!--                <thead>-->
+<!--                    <tr>-->
+<!--                        <th>#</th>-->
+<!--                        <th>Nombre</th>-->
+<!--                    </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    {% for leng in lenguajes %}-->
+<!--                    <tr>-->
+<!--                        <td>{{loop.index}}</td>-->
+<!--                        <td>{{leng}}</td>-->
+<!--                    </tr>-->
+<!--                    {% endfor %}-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--         <h2> UPLOAD YOUR FILE </h2>-->
+<!--    <form action= "http://localhost:5017/videoup" enctype='multipart/form-data' method='POST'>-->
+<!--&lt;!&ndash;        role="form"&ndash;&gt;-->
+<!--        <input type="file" name="input_file"><br>-->
+<!--        <label1 for="input_file">Extension:</label1>-->
+<!--        <input type="text" name="output_file"><br>-->
+<!--        <label2 for="fps">fps:</label2>-->
+<!--        <input type="text" name="fps"><br>-->
+<!--        <input type="submit" value="Convert"><br>-->
+<!--    </form>-->
+
 {% endblock %}
