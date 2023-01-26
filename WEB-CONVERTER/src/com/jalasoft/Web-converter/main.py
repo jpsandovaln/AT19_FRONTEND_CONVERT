@@ -13,7 +13,7 @@
 from flask import Flask
 from flask import render_template
 # from blueprints import video_bp, image_bp
-from blueprints.image_to_image_blueprint import image_to_images_blueprint
+from blueprints.image_to_image_blueprint import image_blueprint
 from blueprints.image_flip_blueprint import image_flip_blueprint
 from blueprints.video_blueprint import video_blueprint
 
@@ -23,22 +23,8 @@ app = Flask(__name__)
 # app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.register_blueprint(video_blueprint)
-app.register_blueprint(image_to_images_blueprint)
+app.register_blueprint(image_blueprint)
 app.register_blueprint(image_flip_blueprint)
-
-
-# class UploadVideo(FlaskForm):  # c name and add description
-#     file_video = FileField("File", validators=[InputRequired()])
-#     param1_video = StringField("Param1", validators=[InputRequired()])
-#     param2_video = StringField("Param2", validators=[InputRequired()])
-#     submit = SubmitField("Convert")
-#
-#
-# class UploadImage(FlaskForm):  # c name and add description
-#     file_image = FileField("File", validators=[InputRequired()])
-#     param1_image = StringField("Param1", validators=[InputRequired()])
-#     # param2_image = StringField("Param2", validators=[InputRequired()])
-#     submit = SubmitField("Convert")
 
 #
 @app.route('/', methods=['GET', "POST"])
