@@ -8,11 +8,12 @@
     <body>
         <form method="post" enctype=multipart/form-data>
             {{ form.hidden_tag() }}
-            <label for="file">File:</label>
-            {{ form.file(id="file") }}
+            <label for="file_image">File:</label>
+            {{ form.file_image(id="file_image") }}
             <br>
-            <label for="output_type">Output type:</label>
-            {{ form.output_type(id="output_type") }}
+            <label for="param1_image">Output type:</label>
+            {{ form.param1_image(id="param1_image") }}
+            <br>
             {{ form.submit() }}
             <a href="{{ download_link }}" download>Download</a>
         </form>

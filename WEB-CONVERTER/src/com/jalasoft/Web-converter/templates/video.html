@@ -8,15 +8,16 @@
     <body>
         <form method="post" enctype=multipart/form-data>
             {{ form.hidden_tag() }}
-            <label for="file">File:</label>
-            {{ form.file(id="file") }}
+            <label for="file_video">File:</label>
+            {{ form.file_video(id="file_video") }}
             <br>
-            <label for="param1">Output type:</label>
-            {{ form.param1(id="param1") }}
+            <label for="param1_video">Output type:</label>
+            {{ form.param1_video(id="param1_video") }}
             <br>
-            <label for="param2">Fps:</label>
-            {{ form.param2(id="param2") }}
+            <label for="param2_video">Fps:</label>
+            {{ form.param2_video(id="param2_video") }}
             <br>
+
             {{ form.submit() }}
             <a href="{{ download_link }}" download>Download</a>
         </form>
