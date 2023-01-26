@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 
-{% block title%} Video {% endblock %}
+{% block title%} Imagen {% endblock %}
 
 {% block body %}
 
@@ -11,12 +11,8 @@
             <label for="file">File:</label>
             {{ form.file(id="file") }}
             <br>
-            <label for="param1">Output type:</label>
-            {{ form.param1(id="param1") }}
-            <br>
-            <label for="param2">Fps:</label>
-            {{ form.param2(id="param2") }}
-            <br>
+            <label for="output_type">Output type:</label>
+            {{ form.output_type(id="output_type") }}
             {{ form.submit() }}
             <a href="{{ download_link }}" download>Download</a>
         </form>
