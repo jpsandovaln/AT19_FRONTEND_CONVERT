@@ -13,20 +13,22 @@
 from flask import Flask
 from flask import render_template
 # from blueprints import video_bp, image_bp
-from blueprints.image_to_image_blueprint import image_blueprint
-from blueprints.image_flip_blueprint import image_flip_blueprint
-from blueprints.video_blueprint import video_blueprint
+from blueprints.image_to_image_bp import image_to_image_blueprint
+from blueprints.image_flip_bp import image_flip_blueprint
+from blueprints.video_to_images_bp import video_to_images_blueprint
+from blueprints.video_to_video_bp import video_to_video_blueprint
+from blueprints.audio_to_audio_bp import audio_to_audio_blueprint
 
 app = Flask(__name__)
-# PATH = os.path.realpath(os.path.dirname(__file__))
-# PATH_UPLOADS = os.path.join(PATH, 'uploads')
-# app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
-app.register_blueprint(video_blueprint)
-app.register_blueprint(image_blueprint)
-app.register_blueprint(image_flip_blueprint)
 
-#
+app.register_blueprint(video_to_images_blueprint)
+app.register_blueprint(video_to_video_blueprint)
+app.register_blueprint(image_to_image_blueprint)
+app.register_blueprint(image_flip_blueprint)
+app.register_blueprint(audio_to_audio_blueprint)
+
+
 @app.route('/', methods=['GET', "POST"])
 @app.route('/home', methods=['GET', "POST"])
 def home():

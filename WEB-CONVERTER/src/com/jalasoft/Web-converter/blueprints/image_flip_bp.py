@@ -27,8 +27,8 @@ image_flip_blueprint = Blueprint('image_flip', __name__)
 #     submit = SubmitField("Convert")
 
 
-@image_flip_blueprint.route('/imageflip', methods=['GET', "POST"])
-def imageflip():
+@image_flip_blueprint.route('/image_flip', methods=['GET', "POST"])
+def image_flip():
     form = Handler1()
 
     if form.validate_on_submit():
@@ -48,10 +48,10 @@ def imageflip():
 
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
-            return render_template('image.html', form=form, download_link=download_link)
+            return render_template('image_flip.html', form=form, download_link=download_link)
         else:
             return "Sorry"
-    return render_template('image.html', form=form)
+    return render_template('image_flip.html', form=form)
 
 
 

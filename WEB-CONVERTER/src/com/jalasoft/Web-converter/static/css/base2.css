@@ -1,0 +1,80 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial';
+}
+
+.site-header {
+    background-color: #343a40;
+    color: white;
+}
+
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar-nav .nav-link {
+    color: #00bfa5; /* green */
+    border-radius: 50%; /* make buttons round */
+    transition: background-color 0.2s ease-in-out; /* add hover animation */
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:active {
+    background-color: #6c757d;
+    color: white;
+}
+
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #343a40;
+}
+
+.navbar-nav .nav-item .dropdown-menu .nav-link {
+    color: white;
+}
+
+.navbar-nav .nav-item .dropdown-menu .nav-link:hover, .navbar-nav .nav-item .dropdown-menu .nav-link:active {
+    background-color: #6c757d;
+    color: white;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.input-container label {
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.input-container input {
+    width: 100%;
+    text-align: right;
+}
+
+.green-button {
+    margin-top: 20px;
+    background-color: green; /* set the background color to green */
+    color: white; /* set the text color to white */
+    border-radius: 50%; /* make the button round */
+    padding: 20px 40px; /* increase the size of the button */
+    font-size: 20px; /* increase the font size */
+    border: none; /* remove the border */
+}
+
+.nav-button {
+    background-color: #fff; /* background color */
+    color: #000; /* text color */
+    display: none; /* hide button by default */
+}
+
+@media (max-width: 768px) { /* target screens smaller than 768px */
+    .nav-button {
+        display: block; /* show button on small screens */
+    }
+}
