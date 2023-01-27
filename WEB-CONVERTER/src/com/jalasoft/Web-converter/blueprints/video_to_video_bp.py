@@ -27,8 +27,9 @@ app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 
-@video_to_video_blueprint.route('/video_to_video', methods=['GET', "POST"])
+@video_to_video_blueprint.route('/video_to_video', methods = ['GET', "POST"])
 def video_to_video():
+    """Manages endpoint for video to video converter"""
     form = Handler1()
 
     if form.validate_on_submit():
@@ -41,14 +42,14 @@ def video_to_video():
         url = 'http://127.0.0.1:5000/videotovideo'
         data = {'output_file': output_type}
         files = {'input_file': uploaded_file}
-        response = requests.post(url, files=files, data=data)
+        response = requests.post(url, files = files, data = data)
         uploaded_file.close()
 
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
-            return render_template('video_to_video.html', form=form, download_link=download_link, output_file = output_type)
+            return render_template('video_to_video.html', form = form, download_link = download_link, output_file = output_type)
         else:
             return "Sorry video"  # Ask
-    return render_template('video_to_video.html', form=form)
+    return render_template('video_to_video.html', form = form)
 
 
