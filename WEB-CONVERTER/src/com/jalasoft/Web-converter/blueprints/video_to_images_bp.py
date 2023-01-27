@@ -50,7 +50,7 @@ def video_to_images():
             download_link = response.text[:-1].strip("\"")
             return render_template('video_to_images.html', form = form, download_link = download_link, output_file = output_type)
         else:
-            return "Sorry video"  #
+            return "Sorry"  #
     return render_template('video_to_images.html', form = form)
 
 
