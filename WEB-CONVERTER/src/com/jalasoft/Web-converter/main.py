@@ -39,6 +39,7 @@ app.register_blueprint(audio_increase_volume_blueprint)
 @app.route('/', methods=['GET', "POST"])
 @app.route('/home', methods=['GET', "POST"])
 def home():
+    """Manages home's page"""
     return render_template('index.html')
 
 

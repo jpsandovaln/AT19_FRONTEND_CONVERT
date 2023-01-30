@@ -27,12 +27,6 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 image_to_image_blueprint = Blueprint('image_to_image', __name__)
 
 
-urls = {
-    'image_to_images': 'http://127.0.0.1:5000/imagetoimage',
-    'image_flip': 'http://127.0.0.1:5000/imageflip'
-}
-
-
 @image_to_image_blueprint.route('/image_to_image', methods=['GET', "POST"])
 def image_to_image():
     """ Manages endpoint for image to image converter"""

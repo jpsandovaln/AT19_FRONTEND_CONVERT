@@ -1,5 +1,5 @@
 #
-# @image_bw.py Copyright (c) 2023 Jalasoft.
+# @image_bw_bp.py Copyright (c) 2023 Jalasoft.
 # 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 # All rights reserved.
 #
