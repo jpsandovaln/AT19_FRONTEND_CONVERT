@@ -1,0 +1,36 @@
+
+h1 {
+    color: #D8E9A8;
+    font-family: fantasy;
+    font-size: 40px;
+}
+
+
+.site-header {
+    background: #4E9F3D;
+    padding: 10px
+}
+.navbar a {
+    font-family: Franklin Gothic Medium;
+    color: #191A19;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0.5em;
+    padding: 1px;
+    line-height: 2em;
+}
+.nav-item a {
+    font-family: Trebuchet MS;
+    color: #191A19;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 0.5em;
+    padding: 1px;
+    line-height: 2em;
+
+}
+.nav-item:hover {
+    background-color: #D8E9A8;
+    border-radius: .5cm;
+}
+

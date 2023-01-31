@@ -1,12 +1,9 @@
 # AT19_FRONTEND_CONVERT
 
-#REQUIREMENTS TO RUN THE CODE
+#REQUIREMENTS TO RUN THE WEB CONVERTER PAGE
 
--Install the requirements.txt
--change the MEDIA_PATH with the path of the "uploads" folder in your computer.
 -Run the converter project from main.py
--Run the web converter project from web.py
--copy this link in a browser:
-http://127.0.0.1:8000/
-
-Happy coding!
+-Install the requirements.txt in your virtual environment
+-Run the web converter project from main.py using virtual environment
+-Use this link in a browser:
+http://127.0.0.1:5017/

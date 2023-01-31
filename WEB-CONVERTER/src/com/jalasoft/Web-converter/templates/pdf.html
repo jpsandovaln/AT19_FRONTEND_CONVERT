@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+
+{% block title%} Video {% endblock %}
+
+{% block body %}
+
+
+    <body>
+        <form method="post" enctype=multipart/form-data>
+            {{ form.hidden_tag() }}
+            <label for="file">File:</label>
+            {{ form.file(id="file") }}
+            <br>
+            <label for="output_type">Output type:</label>
+            {{ form.output_type(id="output_type") }}
+            <br>
+            <label for="fps">Fps:</label>
+            {{ form.fps(id="fps") }}
+            <br>
+            {{ form.submit() }}
+            <a href="{{ download_link }}" download>Download</a>
+        </form>
+    </body>
+
+
+{% endblock %}

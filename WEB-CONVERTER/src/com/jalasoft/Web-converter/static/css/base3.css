@@ -1,0 +1,105 @@
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Arial';
+}
+
+.site-header {
+    background-color: #4d4d4d;
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #4d4d4d;
+}
+
+.navbar-brand {
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link:active {
+    background-color: #9fa8da;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #4d4d4d;
+}
+
+.navbar-nav .nav-item .dropdown-menu .nav-link {
+    color: #ffffff;
+}
+
+.navbar-nav .nav-item .dropdown-menu .nav-link:hover, .navbar-nav .nav-item .dropdown-menu .nav-link:active {
+    background-color: #9fa8da;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #9fa8da;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 300px;
+}
+
+.input-container label {
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.input-container input {
+    width: 100%;
+    text-align: right;
+}
+
+.green-button {
+    margin-top: 20px;
+    background-color: #43a047;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 20px 40px;
+    font-size: 20px;
+    border: none;
+}
+
+button {
+    background-color: #fff;
+    color: #000;
+    display: none;
+}
+
+@media (max-width: 768px) {
+  button {
+    display: block;
+  }
+}
+
+<button class="nav-button">Navigation</button>
+
+.nav-button {
+  background-color: #fff;
+  color: #000;
+}
+
+.hidden {
+    display:none;
+}
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+}
+.navbar-nav .nav-link {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

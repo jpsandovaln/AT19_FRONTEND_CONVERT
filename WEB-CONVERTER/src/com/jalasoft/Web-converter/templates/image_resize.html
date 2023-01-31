@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+
+{% block title%} Image resize {% endblock %}
+
+{% block body %}
+
+<h1>Image resizer</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <body>
+         <form method="post" enctype=multipart/form-data>
+            {{ form.hidden_tag() }}
+            <div class="input-container">
+                <label for="file">File: </label>
+                {{ form.file(id="file") }}
+                <br></div>
+            <div class="input-container">
+                <label for="param1">Output type: </label>
+                {{ form.param1(id="param1") }}
+            <br></div>
+            <div class="input-container">
+                <label for="param2">New size: </label>
+                {{ form.param2(id="param2") }}
+            <br></div>
+
+            {{ form.submit(class_="green-button") }}
+            {% if download_link %}
+                <a href="{{ download_link }}" download class="yellow-button">Download</a>
+            {% endif %}
+        </form>
+    </body>
+    <div class="image-container">
+        <img src="/static/img/image_resize.png" id="image-1">
+        <img src="/static/img/image.jpg" height="300px" width="300px" id="image-2">
+    </div>
+
+        <button id="show-example-button" style="display: none;">Show Example</button>
+        <button id="watch-again-button">Watch again</button>
+        <script src="/static/js/animations.js"></script>
+
+{% endblock %}
