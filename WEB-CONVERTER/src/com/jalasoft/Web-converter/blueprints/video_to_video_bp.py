@@ -48,8 +48,7 @@ def video_to_video():
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
             return render_template('video_to_video.html', form = form, download_link = download_link, output_file = output_type)
-        else:
-            return "Sorry video"  # Ask
+
     return render_template('video_to_video.html', form = form)
 
 

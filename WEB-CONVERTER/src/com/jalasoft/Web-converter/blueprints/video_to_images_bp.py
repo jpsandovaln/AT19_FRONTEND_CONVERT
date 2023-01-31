@@ -41,7 +41,7 @@ def video_to_images():
         output_type = form.param1.data
         fps = form.param2.data
         url = 'http://127.0.0.1:5000/videotoimage/zip'
-        data = {'output_file': output_type, 'fps': fps}
+        data = {'outaput_file': output_type, 'fps': fps}
         files = {'input_file': uploaded_file}
         response = requests.post(url, files = files, data = data)
         uploaded_file.close()
@@ -49,8 +49,7 @@ def video_to_images():
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
             return render_template('video_to_images.html', form = form, download_link = download_link, output_file = output_type)
-        else:
-            return "Sorry"  #
+
     return render_template('video_to_images.html', form = form)
 
 

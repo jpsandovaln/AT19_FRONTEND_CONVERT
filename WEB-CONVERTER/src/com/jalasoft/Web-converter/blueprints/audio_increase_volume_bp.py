@@ -49,6 +49,5 @@ def audio_increase_volume():
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
             return render_template('audio_increase_volume.html', form = form, download_link = download_link, output_file = output_type)
-        else:
-            return "Sorry"
+
     return render_template('audio_increase_volume.html', form = form)

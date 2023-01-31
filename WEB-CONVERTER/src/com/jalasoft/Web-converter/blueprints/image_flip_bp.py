@@ -49,6 +49,5 @@ def image_flip():
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
             return render_template('image_flip.html', form = form, download_link = download_link)
-        else:
-            return "Sorry"
+
     return render_template('image_flip.html', form = form)
