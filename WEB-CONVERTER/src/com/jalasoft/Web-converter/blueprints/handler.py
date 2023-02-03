@@ -14,19 +14,20 @@ from flask_wtf import FlaskForm
 from wtforms import FileField
 from wtforms import SubmitField
 from wtforms import StringField
-from wtforms.validators import InputRequired
+from wtforms.validators import InputRequired, Optional
 
 
 class Handler1(FlaskForm):
-    """Handles the files and param received"""
+    """Handles the files and parameters received for conversion"""
     file = FileField("File", validators=[InputRequired()])
     param1 = StringField("Param1", validators=[InputRequired()])
+    param2 = StringField("Param2", validators=[Optional()])
     submit = SubmitField("Convert")
 
 
 class Handler2(FlaskForm):
-    """Handles the files and params received"""
+    """Handles the files and parameters received for conversion"""
     file = FileField("File", validators=[InputRequired()])
     param1 = StringField("Param1", validators=[InputRequired()])
-    param2 = StringField("Param2", validators=[InputRequired()])
+    param2 = StringField("Param2", validators=[Optional()])
     submit = SubmitField("Convert")
