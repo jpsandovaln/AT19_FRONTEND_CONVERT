@@ -17,12 +17,13 @@ from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
 from blueprints.handler import Handler2
+import ast
 
 audio_increase_volume_blueprint = Blueprint('audio_increase_volume', __name__)
 
 app = Flask(__name__)
 PATH = os.path.realpath(os.path.dirname(__file__))
-PATH_UPLOADS = os.path.join(PATH, '../uploads')
+PATH_UPLOADS = os.path.join(PATH, 'uploads')
 app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
 
@@ -47,7 +48,8 @@ def audio_increase_volume():
         uploaded_file.close()
 
         if response.status_code == 200:
-            download_link = response.text[:-1].strip("\"")
+            download_link = ast.literal_eval(response.text[:-1].strip("\""))
+            download_link = download_link["download_URL"]
             return render_template('audio_increase_volume.html', form = form, download_link = download_link, output_file = output_type)
 
     return render_template('audio_increase_volume.html', form = form)
