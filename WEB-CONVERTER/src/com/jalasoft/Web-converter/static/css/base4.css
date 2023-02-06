@@ -1,5 +1,5 @@
 body {
-    background-color: #000000;
+    background-image: url("/static/img/wpp.jpg");
     color: #ffffff;
     font-family: 'Trebuchet MS';
 }
@@ -9,13 +9,13 @@ h1 {
   font-family: 'Lucida Sans'
 }
 .site-header {
-    background-color: #374047;
+
     color: #ffffff;
     height:120px;
 }
 
 .navbar {
-    background-color: #374047;
+
 }
 
 .navbar-brand {

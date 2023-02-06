@@ -25,4 +25,10 @@ function switchTheme(theme) {
   link.rel = "stylesheet";
   link.href = theme;
   document.head.appendChild(link);
+
+  localStorage.setItem("selected-theme", theme);
+}
+const selectedTheme = localStorage.getItem("selected-theme");
+if (selectedTheme) {
+  switchTheme(selectedTheme);
 }
