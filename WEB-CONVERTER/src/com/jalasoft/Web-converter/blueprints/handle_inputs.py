@@ -1,5 +1,5 @@
 #
-# @handler.py Copyright (c) 2023 Jalasoft.
+# @handle_inputs.py Copyright (c) 2023 Jalasoft.
 # 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 # All rights reserved.
 #
@@ -17,17 +17,17 @@ from wtforms import StringField
 from wtforms.validators import InputRequired, Optional
 
 
-class Handler1(FlaskForm):
+class HandleInputs(FlaskForm):
     """Handles the files and parameters received for conversion"""
     file = FileField("File", validators=[InputRequired()])
     param1 = StringField("Param1", validators=[InputRequired()])
     param2 = StringField("Param2", validators=[Optional()])
     submit = SubmitField("Convert")
 
-
-class Handler2(FlaskForm):
-    """Handles the files and parameters received for conversion"""
-    file = FileField("File", validators=[InputRequired()])
-    param1 = StringField("Param1", validators=[InputRequired()])
-    param2 = StringField("Param2", validators=[Optional()])
-    submit = SubmitField("Convert")
+#
+# class Handler2(FlaskForm):
+#     """Handles the files and parameters received for conversion"""
+#     file = FileField("File", validators=[InputRequired()])
+#     param1 = StringField("Param1", validators=[InputRequired()])
+#     param2 = StringField("Param2", validators=[Optional()])
+#     submit = SubmitField("Convert")

@@ -21,8 +21,8 @@ from blueprints.image_bw_bp import image_bw_blueprint
 from blueprints.image_resize_bp import image_resize_blueprint
 from blueprints.image_rotate_bp import image_rotate_blueprint
 from blueprints.audio_increase_volume_bp import audio_increase_volume_blueprint
-# from blueprints.vidtoim import video_to_images_blueprint
-from blueprints.converter_base_bp import video_to_video_blueprint
+from blueprints.video_to_video_bp import video_to_video_blueprint
+# from blueprints.converter_base_bp import video_to_video_blueprint
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'

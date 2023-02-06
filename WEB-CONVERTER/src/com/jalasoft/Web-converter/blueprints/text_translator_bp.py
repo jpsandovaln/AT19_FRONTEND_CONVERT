@@ -1,5 +1,5 @@
 #
-# @video_to_images_bp.py Copyright (c) 2023 Jalasoft.
+# @video_to_video_bp.py Copyright (c) 2023 Jalasoft.
 # 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 # All rights reserved.
 #
@@ -17,19 +17,18 @@ from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
 
 # app = Flask(__name__)
-video_to_images_blueprint = Blueprint('video_to_images', __name__)
+text_translator_blueprint = Blueprint('text_translator', __name__)
 
 
-class VideoToImagesController:
+class VideoToVideoController:
 
-    @video_to_images_blueprint.route('/video_to_images', methods = ['GET', "POST"])
-    def video_to_images():
-        """Manages endpoint for video to images converter"""
+    @text_translator_blueprint.route('/text_translator', methods = ['GET', "POST"])
+    def text_translator():
+        """Manages endpoint for video to video converter"""
         form = HandleInputs()
         if form.validate_on_submit():
-            url = 'http://127.0.0.1:5000/videotoimage/zip'
-            data = {'output_file': form.param1.data, 'fps': form.param2.data}
-            return ConverterBase(form, url, data, "video_to_images").convert_file()
-        return render_template('video_to_images.html', form = form)
-
+            url = 'http://127.0.0.1:5000/texttranslator'
+            data = {'output_file': form.param1.data}
+            return ConverterBase(form, url, data, "video_to_video").convert_file()
+        return render_template('video_to_video.html', form = form)
 

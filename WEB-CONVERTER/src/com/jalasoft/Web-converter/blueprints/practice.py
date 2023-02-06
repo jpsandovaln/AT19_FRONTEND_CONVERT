@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 # from wtforms import SubmitField
 # from wtforms import StringField
 # from wtforms.validators import InputRequired
-from handler import Handler2, Handler1
+from handle_inputs import Handler2, Handler1
 
 
 video_to_images_blueprint = Blueprint('video_to_images', __name__)
