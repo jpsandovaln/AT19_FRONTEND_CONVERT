@@ -15,19 +15,17 @@ from flask import render_template
 from blueprints.image_to_image_bp import image_to_image_blueprint
 from blueprints.image_flip_bp import image_flip_blueprint
 from blueprints.video_to_images_bp import video_to_images_blueprint
-# from blueprints.video_to_video_bp import video_to_video_blueprint
 from blueprints.audio_to_audio_bp import audio_to_audio_blueprint
 from blueprints.image_bw_bp import image_bw_blueprint
 from blueprints.image_resize_bp import image_resize_blueprint
 from blueprints.image_rotate_bp import image_rotate_blueprint
 from blueprints.audio_increase_volume_bp import audio_increase_volume_blueprint
 from blueprints.video_to_video_bp import video_to_video_blueprint
-# from blueprints.converter_base_bp import video_to_video_blueprint
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
 
-# app.register_blueprint(video_to_images_blueprint)
 app.register_blueprint(video_to_images_blueprint)
 app.register_blueprint(video_to_video_blueprint)
 app.register_blueprint(image_to_image_blueprint)
