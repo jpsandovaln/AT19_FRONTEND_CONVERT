@@ -11,46 +11,24 @@
 #
 
 from flask import Blueprint
-import os
-import requests
 from flask import Flask
 from flask import render_template
-from werkzeug.utils import secure_filename
-from blueprints.handler import Handler1
-import ast
+from blueprints.handle_inputs import HandleInputs
+from blueprints.converter_base_bp import ConverterBase
 
+# app = Flask(__name__)
 video_to_video_blueprint = Blueprint('video_to_video', __name__)
 
-app = Flask(__name__)
-PATH = os.path.realpath(os.path.dirname(__file__))
-PATH_UPLOADS = os.path.join(PATH, 'uploads')
-app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
-app.config['SECRET_KEY'] = 'supersecretkey'
 
+class VideoToVideoController:
 
-@video_to_video_blueprint.route('/video_to_video', methods = ['GET', "POST"])
-def video_to_video():
-    """Manages endpoint for video to video converter"""
-    form = Handler1()
-
-    if form.validate_on_submit():
-        file = form.file.data
-        file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
-                                 secure_filename(file.filename))
-        file.save(file_path)
-        uploaded_file = open(file_path, 'rb')
-        output_type = form.param1.data
-        url = 'http://127.0.0.1:5000/videotovideo'
-        data = {'output_file': output_type}
-        files = {'input_file': uploaded_file}
-        response = requests.post(url, files = files, data = data)
-        uploaded_file.close()
-
-        if response.status_code == 200:
-            download_link = ast.literal_eval(response.text[:-1].strip("\""))
-            download_link = download_link["download_URL"]
-            return render_template('video_to_video.html', form = form, download_link = download_link, output_file = output_type)
-
-    return render_template('video_to_video.html', form = form)
-
+    @video_to_video_blueprint.route('/video_to_video', methods = ['GET', "POST"])
+    def video_to_video():
+        """Manages endpoint for video to video converter"""
+        form = HandleInputs()
+        if form.validate_on_submit():
+            url = 'http://127.0.0.1:5000/videotovideo'
+            data = {'output_file': form.param1.data}
+            return ConverterBase(form, url, data, "video_to_video").convert_file()
+        return render_template('video_to_video.html', form = form)
 
