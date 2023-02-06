@@ -17,6 +17,7 @@ from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
 from blueprints.handler import Handler1
+from module.user_authenticate import LoggedUser
 
 video_to_video_blueprint = Blueprint('video_to_video', __name__)
 
@@ -31,7 +32,7 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 def video_to_video():
     """Manages endpoint for video to video converter"""
     form = Handler1()
-
+    user_aut = LoggedUser().is_logged()
     if form.validate_on_submit():
         file = form.file.data
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
@@ -47,8 +48,11 @@ def video_to_video():
 
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
-            return render_template('video_to_video.html', form = form, download_link = download_link, output_file = output_type)
+            return render_template('video_to_video.html', form = form, download_link = download_link,
+                                   output_file = output_type, new_ep=user_aut['new_ep'],
+                                   link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])
 
-    return render_template('video_to_video.html', form = form)
+    return render_template('video_to_video.html', form = form, new_ep=user_aut['new_ep'],
+                           link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])
 
 

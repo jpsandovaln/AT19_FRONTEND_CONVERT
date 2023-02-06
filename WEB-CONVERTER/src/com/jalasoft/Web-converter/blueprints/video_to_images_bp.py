@@ -17,6 +17,7 @@ from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
 from blueprints.handler import Handler2
+from module.user_authenticate import LoggedUser
 
 video_to_images_blueprint = Blueprint('video_to_images', __name__)
 
@@ -27,11 +28,11 @@ app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 
-@video_to_images_blueprint.route('/video_to_images', methods = ['GET', "POST"])
+@video_to_images_blueprint.route('/video_to_images', methods=['GET', "POST"])
 def video_to_images():
     """Manages endpoint for video to images converter"""
     form = Handler2()
-
+    user_aut = LoggedUser().is_logged()
     if form.validate_on_submit():
         file = form.file.data
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
@@ -43,13 +44,16 @@ def video_to_images():
         url = 'http://127.0.0.1:5000/videotoimage/zip'
         data = {'outaput_file': output_type, 'fps': fps}
         files = {'input_file': uploaded_file}
-        response = requests.post(url, files = files, data = data)
+        response = requests.post(url, files=files, data=data)
         uploaded_file.close()
 
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
-            return render_template('video_to_images.html', form = form, download_link = download_link, output_file = output_type)
+            return render_template('video_to_images.html', form=form, download_link=download_link,
+                                   output_file=output_type, new_ep=user_aut['new_ep'],
+                                   link_label=user_aut['link_label'],
+                                   profile_pic=user_aut['profile_pic'])
 
-    return render_template('video_to_images.html', form = form)
-
-
+    return render_template('video_to_images.html', form=form, new_ep=user_aut['new_ep'],
+                           link_label=user_aut['link_label'],
+                           profile_pic=user_aut['profile_pic'])

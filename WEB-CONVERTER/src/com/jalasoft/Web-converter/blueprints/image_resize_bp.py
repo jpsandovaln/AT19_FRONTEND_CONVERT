@@ -17,6 +17,7 @@ from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
 from blueprints.handler import Handler2
+from module.user_authenticate import LoggedUser
 
 image_resize_blueprint = Blueprint('image_resize', __name__)
 
@@ -27,11 +28,11 @@ app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 
-@image_resize_blueprint.route('/image_resize', methods = ['GET', "POST"])
+@image_resize_blueprint.route('/image_resize', methods=['GET', "POST"])
 def image_resize():
     """Manages endpoint for image resizer"""
     form = Handler2()
-
+    user_aut = LoggedUser().is_logged()
     if form.validate_on_submit():
         file = form.file.data
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
@@ -43,11 +44,17 @@ def image_resize():
         url = 'http://127.0.0.1:5000/imageresize'
         data = {'output_file': output_type, 'new_size': fps}
         files = {'input_file': uploaded_file}
-        response = requests.post(url, files = files, data = data)
+        response = requests.post(url, files=files, data=data)
         uploaded_file.close()
 
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
-            return render_template('image_resize.html', form = form, download_link = download_link, output_file = output_type)
+            return render_template('image_resize.html', form=form, download_link=download_link, output_file=output_type,
+                                   new_ep=user_aut['new_ep'],
+                                   link_label=user_aut['link_label'],
+                                   profile_pic=user_aut['profile_pic'])
 
-    return render_template('image_resize.html', form = form)
+    return render_template('image_resize.html', form=form,
+                           new_ep=user_aut['new_ep'],
+                           link_label=user_aut['link_label'],
+                           profile_pic=user_aut['profile_pic'])

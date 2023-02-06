@@ -17,6 +17,7 @@ from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
 from blueprints.handler import Handler1
+from module.user_authenticate import LoggedUser
 
 app = Flask(__name__)
 PATH = os.path.realpath(os.path.dirname(__file__))
@@ -27,11 +28,11 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 audio_to_audio_blueprint = Blueprint('audio_to_audio', __name__)
 
 
-@audio_to_audio_blueprint.route('/audio_to_audio', methods = ['GET', "POST"])
+@audio_to_audio_blueprint.route('/audio_to_audio', methods=['GET', "POST"])
 def audio_to_audio():
     """Manages endpoint for audio to audio converter"""
     form = Handler1()
-
+    user_aut = LoggedUser().is_logged()
     if form.validate_on_submit():
 
         file = form.file.data
@@ -43,11 +44,17 @@ def audio_to_audio():
         url = 'http://127.0.0.1:5000/audiotoaudio'
         data = {'output_file': output_type}
         files = {'input_file': uploaded_file}
-        response = requests.post(url, files = files, data = data)
+        response = requests.post(url, files=files, data=data)
         uploaded_file.close()
 
         if response.status_code == 200:
             download_link = response.text[:-1].strip("\"")
-            return render_template('audio_to_audio.html', form = form, download_link = download_link)
+            return render_template('audio_to_audio.html', form=form, download_link=download_link,
+                                   new_ep=user_aut['new_ep'],
+                                   link_label=user_aut['link_label'],
+                                   profile_pic=user_aut['profile_pic'])
 
-    return render_template('audio_to_audio.html', form = form)
+    return render_template('audio_to_audio.html', form=form,
+                           new_ep=user_aut['new_ep'],
+                           link_label=user_aut['link_label'],
+                           profile_pic=user_aut['profile_pic'])
