@@ -1,10 +1,15 @@
-<script>
-  var select = document.getElementById("styleSelect");
-  select.addEventListener("change", function() {
-    var selectedValue = select.value;
-    if (selectedValue) {
-      var link = document.getElementById("stylesheet");
-      link.setAttribute("href", selectedValue);
-    }
-  });
-</script>
+const themeSelector = document.getElementById("theme-selector");
+
+themeSelector.addEventListener("change", function () {
+  const currentTheme = document.getElementById("current-theme");
+  if (currentTheme) {
+    currentTheme.remove();
+  }
+
+  const selectedValue = themeSelector.value;
+  const link = document.createElement("link");
+  link.id = "current-theme";
+  link.rel = "stylesheet";
+  link.href = `$/static/css/{selectedValue}.css`;
+  document.head.appendChild(link);
+});
