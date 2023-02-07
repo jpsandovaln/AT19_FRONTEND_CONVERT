@@ -27,9 +27,10 @@ class VideoToVideoController:
     def video_to_video():
         """Manages endpoint for video to video converter"""
         form = HandleInputs()
+        user_aut = LoggedUser().is_logged()
         if form.validate_on_submit():
             url = 'http://127.0.0.1:5000/videotovideo'
             data = {'output_file': form.param1.data}
-            return ConverterBase(form, url, data, "video_to_video").convert_file()
-        return render_template('video_to_video.html', form = form)
+            return ConverterBase(form, url, data, "video_to_video", user_aut['new_ep'], user_aut['link_label'], user_aut['profile_pic']).convert_file()
+        return render_template('video_to_video.html', form = form, new_ep=user_aut['new_ep'], link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])
 

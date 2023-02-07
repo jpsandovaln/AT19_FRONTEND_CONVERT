@@ -52,7 +52,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
 
 app.register_blueprint(video_to_images_blueprint)
-# app.register_blueprint(video_to_video_blueprint)
+app.register_blueprint(video_to_video_blueprint)
 app.register_blueprint(image_to_image_blueprint)
 app.register_blueprint(image_flip_blueprint)
 app.register_blueprint(audio_to_audio_blueprint)

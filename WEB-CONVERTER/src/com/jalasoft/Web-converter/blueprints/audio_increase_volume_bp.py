@@ -27,6 +27,7 @@ audio_increase_volume_blueprint = Blueprint('audio_increase_volume', __name__)
 class AudioIncreaseVolumeController:
 
     @audio_increase_volume_blueprint.route('/audio_increase_volume', methods = ['GET', "POST"])
+    @login_required
     def audio_increase_volume():
         """Manages endpoint for video to images converter"""
         form = HandleInputs()

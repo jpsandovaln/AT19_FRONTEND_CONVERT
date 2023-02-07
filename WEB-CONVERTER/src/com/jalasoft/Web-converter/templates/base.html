@@ -61,7 +61,18 @@
                             </li>
                         </ul>
                     </div>
-                </nav> <a class="user-icon" href="/login"> <img src="/static/img/user.png" alt=""> </a>
+                </nav>
+                <!-- <a class="user-icon" href="/login"> <img src="/static/img/user.png" alt=""> </a> -->
+                <div class="nav-item dropdown login_menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ profile_pic }}" alt="">
+                    </a>
+                    <ul class="dropdown-menu container_menu" aria-labelledby="navbarDropdown">
+                        <li class="nav-item">
+                            <a class="nav-link menu" href="{{ new_ep }}">{{ link_label }}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </header>
     </div>

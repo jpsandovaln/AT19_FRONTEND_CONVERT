@@ -25,11 +25,14 @@ app.config['SECRET_KEY'] = 'supersecretkey'
 
 
 class ConverterBase:
-    def __init__(self, form, url, data, html_name):
+    def __init__(self, form, url, data, html_name, new_ep, link_label, profile_pic):
         self.form = form
         self.url = url
         self.data = data
         self.html_name = html_name
+        self.new_ep = new_ep
+        self.link_label = link_label
+        self.profile_pic = profile_pic
 
     def convert_file(self):
         file = self.form.file.data
@@ -43,8 +46,8 @@ class ConverterBase:
         if response.status_code == 200:
             # print("im here again")
             download_link = response.text[:-1].strip("\"")
-            return render_template(f'{self.html_name}.html', form = self.form, download_link = download_link, html_name = self.html_name)
-        return render_template(f'{self.html_name}.html', form = self.form)
+            return render_template(f'{self.html_name}.html', form = self.form, download_link = download_link, html_name = self.html_name, new_ep = self.new_ep, link_label = self.link_label, profile_pic = self.profile_pic)
+        return render_template(f'{self.html_name}.html', form = self.form, new_ep = self.new_ep, link_label = self.link_label, profile_pic = self.profile_pic)
 
 #
 # video_to_video_blueprint = Blueprint('video_to_video', __name__)
