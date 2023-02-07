@@ -14,6 +14,7 @@ from flask import Blueprint
 from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
+from module.user_authenticate import LoggedUser
 
 
 image_to_image_blueprint = Blueprint('image_to_image', __name__)
@@ -23,11 +24,12 @@ image_to_image_blueprint = Blueprint('image_to_image', __name__)
 def image_to_image():
     """ Manages endpoint for image to image converter"""
     form = HandleInputs()
+    user_aut = LoggedUser().is_logged()
     if form.validate_on_submit():
         url = 'http://127.0.0.1:5000/imagetoimage'
         data = {'output_file': form.param1.data}
-        return ConverterBase(form, url, data, "image_to_image").convert_file()
-    return render_template('image_to_image.html', form=form)
+        return ConverterBase(form, url, data, "image_to_image", user_aut['new_ep'], user_aut['link_label'], user_aut['profile_pic']).convert_file()
+    return render_template('image_to_image.html', form=form, new_ep=user_aut['new_ep'], link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])
     #
     # form = Handler1()
     #

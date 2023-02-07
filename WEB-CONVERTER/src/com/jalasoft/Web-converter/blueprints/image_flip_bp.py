@@ -14,6 +14,7 @@ from flask import Blueprint
 from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
+from module.user_authenticate import LoggedUser
 
 image_flip_blueprint = Blueprint('image_flip', __name__)
 
@@ -21,13 +22,13 @@ image_flip_blueprint = Blueprint('image_flip', __name__)
 @image_flip_blueprint.route('/image_flip', methods=['GET', "POST"])
 def image_flip():
     """Manages endpoint for image flipper"""
-
+    user_aut = LoggedUser().is_logged()
     form = HandleInputs()
     if form.validate_on_submit():
         url = 'http://127.0.0.1:5000/imageflip'
         data = {'output_file': form.param1.data}
-        return ConverterBase(form, url, data, "image_flip").convert_file()
-    return render_template('image_flip.html', form=form)
+        return ConverterBase(form, url, data, "image_flip", user_aut['new_ep'], user_aut['link_label'], user_aut['profile_pic']).convert_file()
+    return render_template('image_flip.html', form=form, new_ep=user_aut['new_ep'], link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])
 
     # form = Handler1()
     #
