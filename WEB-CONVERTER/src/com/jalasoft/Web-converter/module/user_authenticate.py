@@ -12,4 +12,5 @@ class LoggedUser:
             new_ep = '/login'
             link_label = 'Login'
             profile_pic = '../static/img/user.png'
+            
             return {'new_ep': new_ep, 'link_label': link_label, 'profile_pic': profile_pic}

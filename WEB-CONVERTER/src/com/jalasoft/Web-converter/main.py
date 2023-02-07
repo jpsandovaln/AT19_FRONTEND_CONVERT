@@ -1,5 +1,5 @@
 #
-# @app.py Copyright (c) 2023 Jalasoft.
+# @main.py Copyright (c) 2023 Jalasoft.
 # 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 # All rights reserved.
 #
@@ -119,6 +119,7 @@ def login():
 
     # Use library to construct the request for login and provide
     # scopes that let you retrieve user's profile from Google
+    print(request.base_url)
     request_uri = client.prepare_request_uri(authorization_endpoint, redirect_uri=request.base_url + "/callback",
                                              scope=["openid", "email", "profile"])
     print('request uri: ', request_uri)
