@@ -11,12 +11,10 @@
 #
 
 from flask import Blueprint
-from flask import Flask
 from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
 
-# app = Flask(__name__)
 video_to_images_blueprint = Blueprint('video_to_images', __name__)
 
 

@@ -11,7 +11,7 @@ navStyles2.addEventListener("click", function () {
 });
 
 navStyles3.addEventListener("click", function () {
-  switchTheme("/static/css/base3.css");
+  switchTheme("/static/css/base2.css");
 });
 
 function switchTheme(theme) {

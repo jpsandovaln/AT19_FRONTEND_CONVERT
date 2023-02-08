@@ -1,49 +1,63 @@
 body {
-    background-color: #f8f9fa;
-    font-family: 'Arial';
+    background-image: url("/static/img/black.jpg");
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Trebuchet MS';
 }
-
+h1 {
+  text-shadow: 5px 5px 5px gray;
+  text-transform: uppercase;
+  font-family: 'Lucida Sans'
+}
 .site-header {
-    background-color: #343a40;
-    color: white;
+    background-color: #374047;
+    color: #ffffff;
 }
 
 .navbar {
-    background-color: #343a40;
+    background-color: #374047;
 }
 
 .navbar-brand {
-    color: white;
+    color: #ffffff;
 }
 
-.navbar-nav .nav-link {
-    color: #00bfa5; /* green */
-    border-radius: 50%; /* make buttons round */
-    transition: background-color 0.2s ease-in-out; /* add hover animation */
+.navbar-brand:hover {
+color: #ffa000;
 }
 
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link:active {
-    background-color: #6c757d;
-    color: white;
+    background-color: #374047;
+    color: #ffffff;
 }
 
 .navbar-nav .nav-item .dropdown-menu {
-    background-color: #343a40;
+    background-color: #374047;
 }
 
 .navbar-nav .nav-item .dropdown-menu .nav-link {
-    color: white;
+    color: #ffffff;
 }
 
 .navbar-nav .nav-item .dropdown-menu .nav-link:hover, .navbar-nav .nav-item .dropdown-menu .nav-link:active {
-    background-color: #6c757d;
-    color: white;
+    background-color: #ffa000;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #ffa000;
 }
 
 .input-container {
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 310px;
 }
 
 .input-container label {
@@ -53,28 +67,68 @@ body {
 }
 
 .input-container input {
-    width: 100%;
+    width: 70%;
     text-align: right;
 }
 
 .green-button {
     margin-top: 20px;
-    background-color: green; /* set the background color to green */
-    color: white; /* set the text color to white */
-    border-radius: 50%; /* make the button round */
-    padding: 20px 40px; /* increase the size of the button */
-    font-size: 20px; /* increase the font size */
-    border: none; /* remove the border */
+    background-color: #18a123;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 20px 40px;
+    font-size: 20px;
+    border: none;
 }
+
+.yellow-button {
+    margin-top: 20px;
+    background-color: #ffcc00;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 20px 40px;
+    font-size: 20px;
+    border: none;
+}
+
+
+button {
+    background-color: #ffffff;
+    color: #ffffff;
+    display: none;
+}
+
+@media (max-width: 768px) {
+  button {
+    display: block;
+  }
+}
+
+<button class="nav-button">Navigation</button>
 
 .nav-button {
-    background-color: #fff; /* background color */
-    color: #000; /* text color */
-    display: none; /* hide button by default */
+  background-color: #fff;
+  color: #000;
 }
 
-@media (max-width: 768px) { /* target screens smaller than 768px */
-    .nav-button {
-        display: block; /* show button on small screens */
-    }
+.hidden {
+    display:none;
+}
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+}
+.navbar-nav .nav-link {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+}
+
+.site-header img {
+    margin-right: 10px;
 }

@@ -1,5 +1,5 @@
 #
-# @video_to_images_bp.py Copyright (c) 2023 Jalasoft.
+# @converter_base_bp.py Copyright (c) 2023 Jalasoft.
 # 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 # All rights reserved.
 #
@@ -9,7 +9,7 @@
 # accordance with the terms of the license agreement you entered into
 # with Jalasoft.
 #
-
+import ast
 import os
 import requests
 from flask import Flask
@@ -40,21 +40,21 @@ class ConverterBase:
         files = {'input_file': uploaded_file}
         response = requests.post(self.url, files = files, data = self.data)
         uploaded_file.close()
+        print("before if")
         if response.status_code == 200:
-            # print("im here again")
+            print("im here 200")
             download_link = response.text[:-1].strip("\"")
-            return render_template(f'{self.html_name}.html', form = self.form, download_link = download_link, html_name = self.html_name)
-        return render_template(f'{self.html_name}.html', form = self.form)
+            # if response.headers['Content-Type'] == 'application/json':
+            #     download_link = json.loads(download_link)
+            # else:
+            #     download_link = download_link[:-1].strip("\"")
+            # download_link = ast.literal_eval(response.text[:-1].strip("\""))
+            # download_link = download_link["download_URL"]
+            print(download_link)
+            return render_template(f'{self.html_name}.html', form=self.form, download_link=download_link,
+                                   html_name=self.html_name)
+        return render_template(f'{self.html_name}.html', form=self.form)
+        #     return render_template(f'{self.html_name}.html', form = self.form, download_link = download_link, html_name = self.html_name)
+        # return render_template(f'{self.html_name}.html', form = self.form)
 
-#
-# video_to_video_blueprint = Blueprint('video_to_video', __name__)
-#
-# @video_to_video_blueprint.route('/video_to_video', methods = ['GET', "POST"])
-# def video_to_video():
-#     """Manages endpoint for video to video converter"""
-#     form = Handler2()
-#     if form.validate_on_submit():
-#         url = 'http://127.0.0.1:5000/videotovideo'
-#         data = {'output_file': form.param1.data}
-#         return ConverterBase(form, url, data, "video_to_video").convert_file()
-#     return render_template('video_to_video.html', form = form)
+

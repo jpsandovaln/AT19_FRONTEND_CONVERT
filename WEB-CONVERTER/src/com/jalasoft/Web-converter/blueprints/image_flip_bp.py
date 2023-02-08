@@ -21,7 +21,6 @@ image_flip_blueprint = Blueprint('image_flip', __name__)
 @image_flip_blueprint.route('/image_flip', methods=['GET', "POST"])
 def image_flip():
     """Manages endpoint for image flipper"""
-
     form = HandleInputs()
     if form.validate_on_submit():
         url = 'http://127.0.0.1:5000/imageflip'

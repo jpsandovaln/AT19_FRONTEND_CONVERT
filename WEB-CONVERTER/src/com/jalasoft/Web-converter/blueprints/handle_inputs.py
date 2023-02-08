@@ -24,7 +24,9 @@ class HandleInputs(FlaskForm):
     param2 = StringField("Param2", validators=[Optional()])
     submit = SubmitField("Convert")
 
-#
+# change variable names, extra param, convert param, aclarar, documentar comentarios dar contexto
+# input file, output file, extra param
+
 # class Handler2(FlaskForm):
 #     """Handles the files and parameters received for conversion"""
 #     file = FileField("File", validators=[InputRequired()])
