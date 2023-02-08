@@ -14,7 +14,7 @@ from flask import Blueprint
 from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
-from module.user_authenticate import LoggedUser
+from login.user_authenticate import LoggedUser
 
 
 audio_to_audio_blueprint = Blueprint('audio_to_audio', __name__)

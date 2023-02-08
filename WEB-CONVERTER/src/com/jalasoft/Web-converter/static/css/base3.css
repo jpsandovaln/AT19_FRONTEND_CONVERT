@@ -174,12 +174,7 @@ footer {
     height: 50px;
     display: grid;
     place-content: center;
-}
-.container.py-3{
-    min-height: calc(100vh - 120px - 50px);
-}
-
-
+  }
 
 .container_menu{
     background-color: #374047;
@@ -192,4 +187,8 @@ footer {
     margin: 0;
     padding: auto;
     text-align: center;
+}
+
+.container.py-3{
+    min-height: calc(100vh - 120px - 50px);
 }

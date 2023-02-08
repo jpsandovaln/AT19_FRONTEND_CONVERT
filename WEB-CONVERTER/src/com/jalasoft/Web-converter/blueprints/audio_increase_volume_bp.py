@@ -15,8 +15,7 @@ from flask import render_template
 from flask_login import login_required
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
-
-from module.user_authenticate import LoggedUser
+from login.user_authenticate import LoggedUser
 
 audio_increase_volume_blueprint = Blueprint('audio_increase_volume', __name__)
 
