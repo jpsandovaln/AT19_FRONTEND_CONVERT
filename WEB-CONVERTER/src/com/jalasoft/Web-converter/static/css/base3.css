@@ -25,8 +25,9 @@ h1 {
     color: #ffffff;
     margin-top:35px;
 }
+
 .navbar-brand:hover {
-color: #ffa000;
+    color: #ffa000;
 }
 
 .navbar-nav .nav-link:hover, .navbar-nav .nav-link:active {
@@ -83,6 +84,7 @@ color: #ffa000;
     font-size: 20px;
     border: none;
 }
+
 .yellow-button {
     margin-top: 20px;
     background-color: #ffcc00;
@@ -104,7 +106,6 @@ button {
 @media (max-width: 768px) {
   button {
     display: block;
-
   }
 }
 
@@ -137,9 +138,9 @@ button {
     width:50px;
     margin:auto 3rem;
 }
+
 .user-icon img {
     width:100%;
-
 }
 
 .login_menu{
@@ -169,9 +170,16 @@ button {
 }
 
 footer {
-    margin-top:250px;
-    text-align: center;
-  }
+    margin: 0;
+    height: 50px;
+    display: grid;
+    place-content: center;
+}
+.container.py-3{
+    min-height: calc(100vh - 120px - 50px);
+}
+
+
 
 .container_menu{
     background-color: #374047;

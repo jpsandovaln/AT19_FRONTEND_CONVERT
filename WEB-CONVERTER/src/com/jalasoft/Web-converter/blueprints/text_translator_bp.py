@@ -11,20 +11,18 @@
 #
 
 from flask import Blueprint
-from flask import Flask
 from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
 
-# app = Flask(__name__)
 text_translator_blueprint = Blueprint('text_translator', __name__)
 
 
-class VideoToVideoController:
+class TextTranslatorController:
 
     @text_translator_blueprint.route('/text_translator', methods = ['GET', "POST"])
     def text_translator():
-        """Manages endpoint for video to video converter"""
+        """Manages endpoint for text translator"""
         form = HandleInputs()
         if form.validate_on_submit():
             url = 'http://127.0.0.1:5000/texttranslator'
