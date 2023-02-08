@@ -15,6 +15,7 @@ import requests
 from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
+import ast
 
 
 app = Flask(__name__)
@@ -45,7 +46,9 @@ class ConverterBase:
         uploaded_file.close()
         if response.status_code == 200:
             # print("im here again")
-            download_link = response.text[:-1].strip("\"")
+            download_link = ast.literal_eval(response.text[:-1].strip("\""))
+            download_link = download_link["download_URL"]
+            print(download_link)
             return render_template(f'{self.html_name}.html', form = self.form, download_link = download_link, html_name = self.html_name, new_ep = self.new_ep, link_label = self.link_label, profile_pic = self.profile_pic)
         return render_template(f'{self.html_name}.html', form = self.form, new_ep = self.new_ep, link_label = self.link_label, profile_pic = self.profile_pic)
 

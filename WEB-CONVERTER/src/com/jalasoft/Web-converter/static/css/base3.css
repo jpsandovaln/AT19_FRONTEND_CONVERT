@@ -169,8 +169,10 @@ button {
 }
 
 footer {
-    margin-top:250px;
-    text-align: center;
+    margin: 0;
+    height: 50px;
+    display: grid;
+    place-content: center;
   }
 
 .container_menu{
@@ -184,4 +186,8 @@ footer {
     margin: 0;
     padding: auto;
     text-align: center;
+}
+
+.container.py-3{
+    min-height: calc(100vh - 120px - 50px);
 }
