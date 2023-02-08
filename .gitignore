@@ -3,3 +3,4 @@ venv/
 uploads/
 .env
 module/
+__pycache__/
