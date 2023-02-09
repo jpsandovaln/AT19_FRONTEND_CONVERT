@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+{% block title%} Image BW {% endblock %}
+
+{% block body %}
+<h1 style="font-size: 2rem; text-align: center">To access this content you need to be logged in</h1>
+<div class="login_icon_container">
+    <h2> Please, click <a href="/login">here</a> and login with your google account </h2>
+    <a href="/login" class="login_icon" title="login_link"><img src="../static/img/google.png" alt="Google login icon"></a>
+</div>
+{% endblock %}

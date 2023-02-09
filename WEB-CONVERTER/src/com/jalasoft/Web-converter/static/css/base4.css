@@ -1,5 +1,5 @@
 body {
-    background-color: #000000;
+    background-image: url("/static/img/wpp.jpg");
     color: #ffffff;
     font-family: 'Trebuchet MS';
 }
@@ -9,16 +9,14 @@ h1 {
   font-family: 'Lucida Sans'
 }
 .site-header {
-    background-color: #374047;
-    color: #ffffff;
-}
 
-.navbar {
-    background-color: #374047;
+    color: #ffffff;
+    height:120px;
 }
 
 .navbar-brand {
     color: #ffffff;
+    margin-top:35px;
 }
 
 .navbar-brand:hover {
@@ -60,13 +58,12 @@ color: #ffa000;
 }
 
 .input-container label {
-    width: 100px;
-    margin-right: 10px;
+    margin-right: 100px;
     text-align: right;
 }
 
 .input-container input {
-    width: 100%;
+    width: 70%;
     text-align: right;
 }
 
@@ -101,7 +98,6 @@ button {
   }
 }
 
-<button class="nav-button">Navigation</button>
 
 .nav-button {
   background-color: #fff;
@@ -128,4 +124,36 @@ button {
 
 .site-header img {
     margin-right: 10px;
+}
+
+.login_icon_container{
+    display:flex;
+    justify-content: center;
+}
+
+.login_icon{
+    display: block;
+}
+
+.login_menu a, .login_icon{
+    width: 3rem;
+    height: 3rem;
+    padding: 0px !important;
+    margin-left: 1rem;
+}
+
+.login_menu a img, .login_icon img{
+    width: 100%;
+    border-radius: 1.5rem;
+}
+
+
+.user-icon {
+    height:50px;
+    width:50px;
+    margin:auto 1rem;
+}
+.user-icon img {
+    width:100%;
+
 }
