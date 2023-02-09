@@ -65,7 +65,7 @@ class GoogleLogin:
             headers=headers,
             data=body,
             auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
-        )  # this returns the "access token", "expires_in", "scope", "token_type", "id_token"
+        )  # this returns the "access tokenLogin", "expires_in", "scope", "token_type", "id_token"
         client.parse_request_body_response(json.dumps(token_response.json()))
         userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
         uri, headers, body = client.add_token(userinfo_endpoint)

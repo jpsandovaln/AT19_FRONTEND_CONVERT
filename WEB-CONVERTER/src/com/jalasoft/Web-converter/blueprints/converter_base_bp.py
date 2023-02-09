@@ -15,6 +15,8 @@ import requests
 from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
+from tokenLogin.token_generator import write_token
+from blueprints.checksum import Checksum
 import ast
 
 
@@ -24,6 +26,7 @@ PATH_UPLOADS = os.path.join(PATH, '../uploads')
 os.makedirs(PATH_UPLOADS,  exist_ok = True)
 app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
+DATA = {"username": os.getenv("USER_NAME"), "password": os.getenv("PASSWORD")}
 
 
 class ConverterBase:
@@ -37,10 +40,14 @@ class ConverterBase:
         self.profile_pic = profile_pic
 
     def convert_file(self):
+        new_token = write_token(DATA)
+        self.data["tokenLogin"] = new_token
         file = self.form.file.data
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
                                  secure_filename(file.filename))
         file.save(file_path)
+        checksum_value = Checksum().checksum_generator_md5(file_path)
+        self.data['checksum'] = checksum_value
         uploaded_file = open(file_path, 'rb')
         files = {'input_file': uploaded_file}
         response = requests.post(self.url, files = files, data = self.data)
