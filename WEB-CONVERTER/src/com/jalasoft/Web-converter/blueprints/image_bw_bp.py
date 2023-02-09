@@ -15,9 +15,14 @@ from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
 from login.user_authenticate import LoggedUser
+from dotenv import load_dotenv
+import os
 
 
 image_bw_blueprint = Blueprint('image_bw', __name__)
+load_dotenv()
+CONVERTER_URL = os.getenv("CONVERTER_URL")
+PORT_CONVERTER = os.getenv("PORT_CONVERTER")
 
 
 class ImageBwController:
@@ -28,7 +33,7 @@ class ImageBwController:
         form = HandleInputs()
         user_aut = LoggedUser().is_logged()
         if form.validate_on_submit():
-            url = 'http://127.0.0.1:5000/imagebw'
+            url = CONVERTER_URL + PORT_CONVERTER + '/imagebw'
             data = {'output_file': form.param1.data}
             return ConverterBase(form, url, data, "image_bw", user_aut['new_ep'], user_aut['link_label'], user_aut['profile_pic']).convert_file()
         return render_template('image_bw.html', form=form, new_ep=user_aut['new_ep'], link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])

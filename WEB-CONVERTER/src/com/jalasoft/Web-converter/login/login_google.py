@@ -33,6 +33,7 @@ client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 
 def get_google_provider_cfg():
+    """Gets google provider config"""
     return requests.get(GOOGLE_DISCOVERY_URL).json()
 
 
@@ -40,6 +41,7 @@ class GoogleLogin:
 
     @login_google_blueprint.route("/login")
     def login():
+        """Manages login endpoint"""
         google_provider_cfg = get_google_provider_cfg()
         authorization_endpoint = google_provider_cfg["authorization_endpoint"]
         request_uri = client.prepare_request_uri(authorization_endpoint, redirect_uri=request.base_url + "/callback",
@@ -48,6 +50,7 @@ class GoogleLogin:
 
     @callback_blueprint.route("/login/callback")
     def callback():
+        """Manages callback endpoint"""
         code = request.args.get("code")
         google_provider_cfg = get_google_provider_cfg()
         token_endpoint = google_provider_cfg["token_endpoint"]
@@ -74,5 +77,6 @@ class GoogleLogin:
     @logout_blueprint.route("/logout")
     @login_required
     def logout():
+        """Manages logout endpoint"""
         logout_user()
         return redirect(url_for("home"))

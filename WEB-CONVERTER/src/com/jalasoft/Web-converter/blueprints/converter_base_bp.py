@@ -21,6 +21,7 @@ import ast
 app = Flask(__name__)
 PATH = os.path.realpath(os.path.dirname(__file__))
 PATH_UPLOADS = os.path.join(PATH, '../uploads')
+os.makedirs(PATH_UPLOADS,  exist_ok = True)
 app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
 

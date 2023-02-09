@@ -10,22 +10,13 @@
 # with Jalasoft.
 #
 
-# Python standard libraries
 import sqlite3
-from dotenv import load_dotenv
-
-load_dotenv()
-
-# Third party libraries
 from flask_login import (
     LoginManager,
 )
-
-# Internal imports
 from userDB.db import init_db_command
 from userDB.user import User
 from login.user_authenticate import LoggedUser
-
 from flask import Flask
 from flask import render_template
 from blueprints.image_to_image_bp import image_to_image_blueprint
@@ -38,6 +29,7 @@ from blueprints.image_rotate_bp import image_rotate_blueprint
 from blueprints.audio_increase_volume_bp import audio_increase_volume_blueprint
 from blueprints.video_to_video_bp import video_to_video_blueprint
 from login.login_google import login_google_blueprint, callback_blueprint, logout_blueprint
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
@@ -66,12 +58,14 @@ app.register_blueprint(logout_blueprint)
 
 @login_manager.unauthorized_handler
 def unauthorized():
+    """Returns unathorized message"""
     return render_template('need_be_logged.html', new_ep='/login', link_label='Login',
                            profile_pic='../static/img/user.png'), 403
 
 
 @login_manager.user_loader
 def load_user(user_id):
+    """Gets the user from DB"""
     return User.get(user_id)
 
 
