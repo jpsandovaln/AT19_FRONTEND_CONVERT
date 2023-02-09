@@ -26,7 +26,6 @@ PATH_UPLOADS = os.path.join(PATH, '../uploads')
 os.makedirs(PATH_UPLOADS,  exist_ok = True)
 app.config['UPLOAD_FOLDER'] = PATH_UPLOADS
 app.config['SECRET_KEY'] = 'supersecretkey'
-DATA = {"username": os.getenv("USER_NAME"), "password": os.getenv("PASSWORD")}
 
 
 class ConverterBase:
@@ -38,10 +37,12 @@ class ConverterBase:
         self.new_ep = new_ep
         self.link_label = link_label
         self.profile_pic = profile_pic
+        self.login_url = os.getenv('CONVERTER_URL') + os.getenv('PORT_CONVERTER') + '/login'
+        self.user_credentials = {"username": os.getenv("USER_NAME"), "password": os.getenv("PASSWORD")}
 
     def convert_file(self):
-        new_token = write_token(DATA)
-        self.data["tokenLogin"] = new_token
+        new_token = requests.post(self.login_url, self.user_credentials)
+        headers = {'Authorization': 'Bearer ' + new_token}
         file = self.form.file.data
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
                                  secure_filename(file.filename))
@@ -50,7 +51,7 @@ class ConverterBase:
         self.data['checksum'] = checksum_value
         uploaded_file = open(file_path, 'rb')
         files = {'input_file': uploaded_file}
-        response = requests.post(self.url, files = files, data = self.data)
+        response = requests.post(self.url, files = files, data = self.data, headers = headers)
         uploaded_file.close()
         if response.status_code == 200:
             download_link = ast.literal_eval(response.text[:-1].strip("\""))
