@@ -15,7 +15,6 @@ import requests
 from flask import Flask
 from flask import render_template
 from werkzeug.utils import secure_filename
-from tokenLogin.token_generator import write_token
 from blueprints.checksum import Checksum
 import ast
 
