@@ -1,7 +1,9 @@
 body {
-    background-image: url("/static/img/wpp.jpg");
-    color: #ffffff;
-    font-family: 'Trebuchet MS';
+    background-image: url("/static/img/material.jpg");
+    background-size: cover;
+    background-position: auto;
+    font-family: 'Kanit', sans-serif;
+    color: #F1F1F1;
 }
 h1 {
   text-shadow: 5px 5px 5px gray;
@@ -10,12 +12,12 @@ h1 {
 }
 .site-header {
 
-    color: #ffffff;
+    color: #E2E2E4;
     height:120px;
 }
 
 .navbar-brand {
-    color: #ffffff;
+    color: #E2E2E4;
     margin-top:35px;
 }
 
@@ -54,11 +56,12 @@ color: #ffa000;
 .input-container {
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 310px;
 }
 
 .input-container label {
-    margin-right: 100px;
+    width: 100px;
+    margin-right: 10px;
     text-align: right;
 }
 
@@ -71,16 +74,17 @@ color: #ffa000;
     margin-top: 20px;
     background-color: #18a123;
     color: #ffffff;
-    border-radius: 50%;
+    border-radius: 20px;
     padding: 20px 40px;
     font-size: 20px;
     border: none;
 }
+
 .yellow-button {
     margin-top: 20px;
     background-color: #ffcc00;
     color: #ffffff;
-    border-radius: 50%;
+    border-radius: 20px;
     padding: 20px 40px;
     font-size: 20px;
     border: none;
@@ -156,4 +160,13 @@ button {
 .user-icon img {
     width:100%;
 
+}
+footer {
+    margin: 0;
+    height: 50px;
+    display: grid;
+    place-content: center;
+}
+.container.py-3{
+    min-height: calc(100vh - 120px - 50px);
 }
