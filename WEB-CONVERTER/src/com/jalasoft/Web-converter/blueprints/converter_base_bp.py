@@ -40,14 +40,15 @@ class ConverterBase:
         self.user_credentials = {"username": os.getenv("USER_NAME"), "password": os.getenv("PASSWORD")}
 
     def convert_file(self):
-        new_token = requests.post(self.login_url, self.user_credentials)
+        new_token = requests.get(self.login_url, data = self.user_credentials).json()
+        new_token = new_token['token']
         headers = {'Authorization': 'Bearer ' + new_token}
         file = self.form.file.data
         file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'],
                                  secure_filename(file.filename))
         file.save(file_path)
         checksum_value = Checksum().checksum_generator_md5(file_path)
-        self.data['checksum'] = checksum_value
+        self.data['checksum_param'] = checksum_value
         uploaded_file = open(file_path, 'rb')
         files = {'input_file': uploaded_file}
         response = requests.post(self.url, files = files, data = self.data, headers = headers)
