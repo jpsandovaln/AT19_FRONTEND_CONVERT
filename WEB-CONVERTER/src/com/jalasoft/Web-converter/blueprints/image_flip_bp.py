@@ -15,6 +15,12 @@ from flask import render_template
 from blueprints.handle_inputs import HandleInputs
 from blueprints.converter_base_bp import ConverterBase
 from login.user_authenticate import LoggedUser
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+port = int(os.getenv('PORT'))
+host = str(os.getenv('HOST_PRIVATE'))
 
 image_flip_blueprint = Blueprint('image_flip', __name__)
 
@@ -25,7 +31,7 @@ def image_flip():
     user_aut = LoggedUser().is_logged()
     form = HandleInputs()
     if form.validate_on_submit():
-        url = 'http://127.0.0.1:5000/imageflip'
+        url = 'http://host:port/imageflip'
         data = {'output_file': form.param1.data}
         return ConverterBase(form, url, data, "image_flip", user_aut['new_ep'], user_aut['link_label'], user_aut['profile_pic']).convert_file()
     return render_template('image_flip.html', form=form, new_ep=user_aut['new_ep'], link_label=user_aut['link_label'], profile_pic=user_aut['profile_pic'])

@@ -45,22 +45,10 @@ class ConverterBase:
         response = requests.post(self.url, files = files, data = self.data)
         uploaded_file.close()
         if response.status_code == 200:
-            # print("im here again")
             download_link = ast.literal_eval(response.text[:-1].strip("\""))
             download_link = download_link["download_URL"]
             print(download_link)
             return render_template(f'{self.html_name}.html', form = self.form, download_link = download_link, html_name = self.html_name, new_ep = self.new_ep, link_label = self.link_label, profile_pic = self.profile_pic)
         return render_template(f'{self.html_name}.html', form = self.form, new_ep = self.new_ep, link_label = self.link_label, profile_pic = self.profile_pic)
 
-#
-# video_to_video_blueprint = Blueprint('video_to_video', __name__)
-#
-# @video_to_video_blueprint.route('/video_to_video', methods = ['GET', "POST"])
-# def video_to_video():
-#     """Manages endpoint for video to video converter"""
-#     form = Handler2()
-#     if form.validate_on_submit():
-#         url = 'http://127.0.0.1:5000/videotovideo'
-#         data = {'output_file': form.param1.data}
-#         return ConverterBase(form, url, data, "video_to_video").convert_file()
-#     return render_template('video_to_video.html', form = form)
+
