@@ -16,7 +16,7 @@ WORKDIR /
 RUN apk update \
     apk add --no-cache python3-dev\&& pip install --upgrade pip
 
-COPY . /
+COPY AT19_FRONTEND_CONVERT/. /
 
 RUN apk update
 RUN apk upgrade

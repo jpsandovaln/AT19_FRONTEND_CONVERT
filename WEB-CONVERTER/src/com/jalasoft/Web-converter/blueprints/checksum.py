@@ -23,5 +23,5 @@ class Checksum:
             md5 = hashlib.md5()
             md5.update(content)
             check = md5.hexdigest()
-            
+               
         return check
