@@ -3,3 +3,4 @@ venv/
 uploads/
 module/
 __pycache__/
+.v*/
