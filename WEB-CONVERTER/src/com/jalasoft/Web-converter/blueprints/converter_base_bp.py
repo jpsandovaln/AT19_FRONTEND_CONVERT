@@ -40,7 +40,7 @@ class ConverterBase:
         self.user_credentials = {"username": os.getenv("USER_NAME"), "password": os.getenv("PASSWORD")}
 
     def convert_file(self):
-        new_token = requests.get(self.login_url, data = self.user_credentials).json()
+        new_token = requests.post(self.login_url, data = self.user_credentials).json()
         new_token = new_token['token']
         headers = {'Authorization': 'Bearer ' + new_token}
         file = self.form.file.data
