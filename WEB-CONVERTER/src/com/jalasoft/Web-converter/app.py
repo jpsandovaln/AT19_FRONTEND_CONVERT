@@ -10,6 +10,7 @@
 # with Jalasoft.
 #
 
+import os
 import sqlite3
 from flask_login import (
     LoginManager,
@@ -30,6 +31,8 @@ from blueprints.audio_increase_volume_bp import audio_increase_volume_blueprint
 from blueprints.video_to_video_bp import video_to_video_blueprint
 from login.login_google import login_google_blueprint, callback_blueprint, logout_blueprint
 
+host = str(os.getenv('HOST'))
+port = int(os.getenv('PORT'))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
@@ -79,4 +82,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5017, ssl_context="adhoc")
+    app.run(debug=True, host = host, port=port, ssl_context="adhoc")
