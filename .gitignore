@@ -1,0 +1,5 @@
+venv/
+.idea/
+uploads/
+module/
+__pycache__/

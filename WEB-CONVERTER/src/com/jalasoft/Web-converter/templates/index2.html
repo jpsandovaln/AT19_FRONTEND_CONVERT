@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>CONVERTER</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{{url_for('static', filename='css/style.css')}}">
+    <script src='main.js'></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="site-content" style="height: auto !important;">
+    <header class="site-header">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">
+                    <img src="{{ user_image}}" alt="Converter" height="100px" width="120px"/>
+                </a>
+            </div>
+            <div class="name">
+                <h3>FLDSMDFR  App</h3>
+                <h4>Converter</h4>
+            </div>
+            <div class="button">
+                <a href="http://192.168.100.35:8000/aboutus">About Us</a>
+            </div>
+            <div class="button2">
+                <a href="http://192.168.100.35:8000/signin">Sign in</a>
+            </div>
+        </div>
+    </header>
+    </div>
+    <ul class="menu-2">
+        <li><a href="http://192.168.100.35:8000/videotoimage">Video To Image</a></li>
+        <li><a href="http://192.168.100.35:8000/videoconverter">Video Converter</a></li>
+        <li><a href="http://192.168.100.35:8000/imageconverter">Image Converter</a></li>
+        <li><a href="http://192.168.100.35:8000/audioconverter">Audio Converter</a></li>
+        <li><a href="http://192.168.100.35:8000/pdftoimage">PDF to image</a></li>
+    </ul>
+    <h2> UPLOAD YOUR FILE </h2>
+    <form href= "http://192.168.100.35:8000/" enctype='multipart/form-data' method='POST' role="form">
+        <input type="file" name="input_file"><br>
+        <label1 for="input_file">Extension:</label1>
+        <input type="text" name="output_file"><br>
+        <label2 for="fps">fps:</label2>
+        <input type="text" name="fps"><br>
+        <input type="submit" value="Convert"><br>
+
+    </form>
+    <div class="Download">
+        <a href= "http://localhost:5000/download?file_name=videoplayback.zip" download="videotoimage" title="Download Zip">Download Zip</a>
+    </div>
+    <div class="Download_Link">
+        <p4> Download Link: {{download_link}}
+            <a href="http://localhost:5000/download?file_name=videoplayback.zip"></a>
+        </p4><br><br>
+    </div>
+    <h1>Convert your Video to Images</h1>
+    <p>By submitting your video to the upload box, our online</p>
+    <p>converter helps you convert your video to images.</p>
+    <div class="button-step1">
+        <a href="#">Step 1</a>
+    </div>
+    <p1>Select a Converter above</p1>
+    <div class="button-step2">
+        <a href="#">Step 2</a>
+    </div>
+    <p2>Submit your file</p2>
+    <div class="button-step3">
+        <a href="#">Step 3</a>
+    </div>
+    <p3>Get your Result!</p3>
+</body>
+</html>

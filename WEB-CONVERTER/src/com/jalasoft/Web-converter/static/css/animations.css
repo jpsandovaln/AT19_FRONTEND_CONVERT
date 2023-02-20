@@ -1,0 +1,51 @@
+/* Define the animation */
+@keyframes slide-in-out {
+    0% {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply the animation to the first image */
+#image-1 {
+    animation: slide-in-out 2s ease-in-out forwards;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* Apply the reverse animation to the second image */
+#image-2 {
+    animation: slide-in-out 2s ease-in-out forwards;
+    animation-direction: reverse;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* Initially hide the second image */
+#image-2 {
+    transform: translateX(100%);
+    opacity: 0;
+}
+#image-1.active {
+    animation: slide-in-out 2s ease-in-out forwards;
+}
+#image-2.active {
+    animation: slide-in-out 2s ease-in-out forwards;
+    animation-direction: reverse;
+}
+#show-example-button {
+    position: absolute;
+    top: 50%; /* This will position the button in the middle vertically */
+    left: 50%; /* This will position the button in the middle horizontally */
+    transform: translate(-50%, -50%); /* This will adjust the position of the button so that it's centered */
+    /* Other styling for the button, such as width, height, background color, etc. */
+}
+
